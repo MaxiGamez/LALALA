@@ -8,24 +8,24 @@ import './App.css';
 
 function App() {
       return (
-            
-            <div className="Header">
-                  <header className="Header__content">
-                        <div className="Header__content-logo">
-                              <Logo />
-                        </div>
-                        <div>
-                              <NavBar />
-                        </div>
-                        <div className="Header__content-cart">
-                              <CartWidget />
-                        </div>
-                  </header>
+            <div>
+                  <div className="Header">
+                        <header className="Header__content">
+                              <div className="Header__content-logo">
+                                    <Logo />
+                              </div>
+                              <div>
+                                    <NavBar />
+                              </div>
+                              <div className="Header__content-cart">
+                                    <CartWidget />
+                              </div>
+                        </header>
+                  </div>
                   <div>
                         <ItemListContainer greeting={"Bienvenidos"} />
                   </div>
             </div>
-
       );
 }
 
