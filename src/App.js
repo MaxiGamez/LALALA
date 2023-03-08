@@ -1,32 +1,32 @@
-import logo from './logo.svg';
+
 import React from "react";
 import NavBar from "./componentes/NavBar";
-import Logo from "./componentes/Logo";
-import CartWidget from "./componentes/CartWidget";
 import ItemListContainer from "./componentes/ItemListContainer";
 import './App.css';
+import ItemDetailContainer from "./componentes/ItemDetailContainer";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 
 function App() {
       return (
-            <div>
-                  <div className="Header">
-                        <header className="Header__content">
-                              <div className="Header__content-logo">
-                                    <Logo />
-                              </div>
-                              <div>
-                                    <NavBar />
-                              </div>
-                              <div className="Header__content-cart">
-                                    <CartWidget />
-                              </div>
-                        </header>
-                  </div>
-                  <div>
-                        <ItemListContainer greeting={"Bienvenidos"} />
-                  </div>
+            <div className="container">
+                  <BrowserRouter>
+
+                        <NavBar />
+
+                        <Routes>
+                              <Route path="/" element={<ItemListContainer greeting={"Productos Intipan"} />} />
+
+                              <Route path="/productos/:idUser" element={<ItemDetailContainer />} />
+
+                              <Route
+                                    path="/category/:category"
+                                    element={<ItemListContainer greeting={"Para su mesa y para cocinar"} />}
+                              />
+                        </Routes>
+                  </BrowserRouter>
             </div>
       );
 }
 
 export default App;
+
