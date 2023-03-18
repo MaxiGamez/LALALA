@@ -6,6 +6,7 @@ const productos = [
         precio: 390,
         avatar: "/img/pan-rallado2.jpeg",
         category:"cocinar",
+        stock:5,
     },
 
     {
@@ -15,6 +16,7 @@ const productos = [
         precio: 3250,
         avatar: "/img/pan-rallado2.jpeg",
         category:"cocinar",
+        stock:10,
     },
 
     {
@@ -24,6 +26,7 @@ const productos = [
         precio: 205,
         avatar: "/img/tostadas2.jpeg",
         category:"mesa",
+        stock:15,
     },
     {
         id: 3,
@@ -32,6 +35,7 @@ const productos = [
         precio: 220,
         avatar: "/img/tostadas-semillas2.jpeg",
         category:"mesa",
+        stock:20,
     },
 ]
 

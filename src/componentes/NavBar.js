@@ -4,9 +4,8 @@ import Logo from "./Logo";
 import CartWidget from "./CartWidget";
 
 export default function NavBar() {
+
     const category = { mesa: "mesa", cocinar: "cocinar" }
-
-
 
     return (
 
@@ -24,9 +23,13 @@ export default function NavBar() {
                 </ul>
             </div>
 
-            <CartWidget />
+            <div className="carrito">
+                <Link to="/cart">
+                    <CartWidget />
+                </Link>
+            </div>
 
         </div>
     )
-    
+
 }

@@ -1,7 +1,16 @@
 import React from "react";
 import "../App.css";
+import ItemCount from "./ItemCount";
 
-const Item = ({ id, nombre, avatar, peso, precio }) => {
+
+
+const Item = ({ id, nombre, avatar, peso, precio, stock }) => {
+    
+    function onAddToCart(count) {
+        alert(`Agregaste ${count} items al carrito`);
+       
+    }
+
 
     return (
 
@@ -14,7 +23,12 @@ const Item = ({ id, nombre, avatar, peso, precio }) => {
                     <h4>{`${nombre}`}</h4>
                     <p>{peso}gr</p>
                     <p>${precio}</p>
-                    <button>Ver Mas</button>
+                    <p>{stock}ud.</p>
+                    <br></br>
+                    <div>
+                    {<ItemCount onAddToCart={onAddToCart} initial={1} stock={stock}/>}
+                </div>
+
                 </li>
 
             </ul>
