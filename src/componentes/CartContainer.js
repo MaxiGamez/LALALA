@@ -17,6 +17,8 @@ function CartContainer() {
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
+                        {/* <th>Sumar</th>
+                        <th>Restar</th> */}
                         <th>Remover</th>
                         <th>Total</th>
                     </tr>

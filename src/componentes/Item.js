@@ -1,16 +1,11 @@
 import React from "react";
 import "../App.css";
-import ItemCount from "./ItemCount";
+import { Link } from "react-router-dom";
+import Button from "./Button";
 
 
 
 const Item = ({ id, nombre, avatar, peso, precio, stock }) => {
-    
-    function onAddToCart(count) {
-        alert(`Agregaste ${count} items al carrito`);
-       
-    }
-
 
     return (
 
@@ -19,15 +14,19 @@ const Item = ({ id, nombre, avatar, peso, precio, stock }) => {
             <ul className="item-list">
 
                 <li className="item-card" id={id}>
-                    <img src={avatar} />
-                    <h4>{`${nombre}`}</h4>
-                    <p>{peso}gr</p>
-                    <p>${precio}</p>
-                    <p>{stock}ud.</p>
+                    <img alt="imagen" src={avatar} />
+                    <h3>{`${nombre}`}</h3>
+                    <h4>{peso}gr</h4>
+                    <h4>${precio}</h4>
+                    <small>{stock}ud.</small>
                     <br></br>
-                    <div>
-                    {<ItemCount onAddToCart={onAddToCart} initial={1} stock={stock}/>}
-                </div>
+                
+                    <Link to={`/productos/${id}`}>
+                                <Button>
+                                    Ver Detalles
+                                </Button>
+                            </Link>
+                   
 
                 </li>
 
