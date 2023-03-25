@@ -4,65 +4,46 @@ import { createContext, useState } from "react";
 const cartContext = createContext({ cart: [] });
 
 const Provider = cartContext.Provider;
-// -------------------------------------------
 
 export function CartContextProvider({ children }) {
 
     const [cart, setCart] = useState([]);
 
-    function addItem(item, count) {
-        const newCart = JSON.parse(JSON.stringify(cart));
-
-        if (isInCart(item.id)) {
-
-            let index = cart.findIndex((itemInCart) => itemInCart.id === item.id);
-            newCart[index].count = newCart[index].count + count;
-        } else {
-            newCart.push({ ...item, count });
-        }
+    const addItem = (item, newCantidad) => {
+        let newCart = cart.filter((prod) => prod.id !== item.id);
+        newCart.push({...item, quantity: newCantidad,subtotal: item.precio * newCantidad});
         setCart(newCart);
-    }
-
-    // Funcion dentro del carrito
-    function isInCart(id) {
-        return cart.some((item) => item.id === id);
-    }
-
-    // Funciones de eliminar item del carrito
-    function deleteItem(id) {
-        setCart(cart.filter((product) => product.id !== id));
     };
-
-    // Funcion del total del carrito
-    function getCountInCart() {
-        let total = 0;
-        for (let i = 0; i < cart.length; i++)
-            cart.forEach((item) => total + item.count);
-        return total;
-    }
-
-    // Funcion remover item del carrito
-    function removeItemCart() {
-        const newCart = JSON.parse(JSON.stringify(cart));
-        newCart.pop();
-        setCart(newCart);
-    }
 
     // Funcion vaciar carrito
     const clearCart = () => {
         setCart([]);
     };
 
+    // Funciones de eliminar item del carrito
+    const deleteItem = (id) => {
+        setCart(cart.filter((prod) => prod.id !== id));
+    };
+
+    // Funcion del total del carrito
+    const quantity = cart.reduce((acc, curr) => {
+        return acc + curr.quantity;
+    }, 0);
+
+    // Total del carrito
+    const total = cart.reduce((acc, curr) => acc + curr.precio,0);
+    
+
     return (
         <>
             <Provider value={{
                 cart,
-                isInCart,
+                quantity,
+                total,
                 deleteItem,
-                addItem,
-                removeItemCart,
+                addItem,              
                 clearCart,
-                getCountInCart,
+                setCart,
             }}>
                 {children}
             </Provider>

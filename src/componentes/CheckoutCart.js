@@ -1,23 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-function handleCheckout (){
+import { useNavigate } from "react-router-dom";
 
-    function handleCheckout({cart,total}){
+function CheckoutCart({ cart, total }) {
+ 
+    const navigateTo = useNavigate();
 
-        const orderData={
-buyer :
+    async function handleCheckout() {
+        const orderData = {
+          buyer: { name: "Santiago", phone: "12345", email: "santi@santi.com" },
+          items: cart,
+          total: total,
+          timestamp: new Date(),
+        };
+        const id= await createOrder(orderData);
 
-
-    }
-
-}
+        navigateTo(`/checkout/${id}`)
 }
 
 return(
+    <div>
+    
+    <button onClick={handleCheckout}>Terminar Compra</button>
+    
+  </div>
 
-<div>
-    <button>Terminar Compra</button>
-</div>
 )
+}
 
 export default CheckoutCart;

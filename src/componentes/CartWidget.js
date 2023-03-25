@@ -5,7 +5,7 @@ import cartContext from "../context/cartContext";
 
 
 function CartWidget() {
-  const {cart, test} = useContext(cartContext);
+  const {cart} = useContext(cartContext);
   
   const cartCount = cart.length;
 

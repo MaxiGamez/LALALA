@@ -9,8 +9,7 @@ export default function ItemList({ users, category }) {
     const categoria = users.filter((p) => (p.category === category));
 
     if (category) {
-        return categoria.map(
-            (producto) => (
+        return categoria.map((producto) => (
                 <div key={producto.id}>
                     <Item
                         id={producto.id}
@@ -19,6 +18,7 @@ export default function ItemList({ users, category }) {
                         peso={producto.peso}
                         precio={producto.precio}
                         stock={producto.stock}
+                        num={producto.num}
                     />
                 </div>
             )
@@ -31,12 +31,12 @@ export default function ItemList({ users, category }) {
                     {users.map((user) => (
 
                         <li className="item-card" key={user.id}>
-                            <img src={user.avatar}/>
+                            <img src={user.avatar} alt={user.nombre}/>
 
-                            <h4>{`${user.nombre}`}</h4>
+                            <h2>{`${user.nombre}`}</h2>
                             
-                            <p>{user.peso}gr</p>
-                            <p>${user.precio}</p>
+                            <h4>{user.peso}gr</h4>
+                            <h4>${user.precio}</h4>
                             <br></br>
                             <Link to={`/productos/${user.id}`}>
                                 <Button>

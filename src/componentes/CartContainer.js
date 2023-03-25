@@ -2,14 +2,20 @@ import React from "react";
 import { useContext } from "react";
 import cartContext from "../context/cartContext";
 import Button from "./Button";
+import { CartTotal } from "./CartTotal";
+
 
 function CartContainer() {
-    const { cart } = useContext(cartContext);
+  const { cart } = useContext(cartContext);
 
-    return (
-        <>
-            <h1>Tu Carrito</h1>
 
+
+
+  return cart.length === 0 ? (
+    <div className="empty">
+      <h1>No hay Items en el Carrito</h1>
+    </div>
+  ) : (  
             <table className="cartList">
                 <thead className="cartList_head">
                     <tr className="cartList_row">
@@ -17,8 +23,6 @@ function CartContainer() {
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
-                        {/* <th>Sumar</th>
-                        <th>Restar</th> */}
                         <th>Remover</th>
                         <th>Total</th>
                     </tr>
@@ -32,21 +36,17 @@ function CartContainer() {
                             </td>
                             <td>{user.nombre}</td>
                             <td>$ {user.precio}</td>
-                            <td>{user.count}</td>
+                            <td>{user.quantity}</td>
                             <td>
                                 <Button color="#c63224">X</Button>
                             </td>
-                            <th>$ --,--</th>
+                            <CartTotal/>
                         </tr>
                     ))}
                 </tbody>
             </table>
 
-            <div className="cartList_detail">
-                <h4>El total de tu compra es de $ --,--</h4>
-            </div>
-        </>
-    );
+  );
 }
 
 export default CartContainer;

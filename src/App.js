@@ -7,7 +7,7 @@ import ItemDetailContainer from "./componentes/ItemDetailContainer";
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import { CartContextProvider } from "./context/cartContext";
 import CartContainer from "./componentes/CartContainer";
-
+// import { exportDataWithBatch } from "./services/firestore";
 
 function App() {
       return (
@@ -26,9 +26,12 @@ function App() {
                                           path="/category/:category"
                                           element={<ItemListContainer greeting={"Para su mesa y para cocinar"} />} />
 
-                                    <Route path="/cart" element={<CartContainer />} />
+                                    <Route path="/cart" element={<CartContainer />}/>
+
+                                    <Route path="/checkout/:id"
+                                          element={<h3>Gracias por tu compra</h3>}/>
                               </Routes>
-                              
+
                         </BrowserRouter>
                   </CartContextProvider>
             </div>

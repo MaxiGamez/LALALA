@@ -5,53 +5,22 @@ import ItemCount from "./ItemCount";
 import { useContext } from "react";
 import cartContext from "../context/cartContext";
 import Loader from "./Loader";
-
-// --------------------------------------------------------------------------
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, doc, getDocs } from "firebase/firestore";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyAcYk26hqx6nD1ArnEZb4On8cmG_H37DKg",
-    authDomain: "proyecto-en-reactjs.firebaseapp.com",
-    projectId: "proyecto-en-reactjs",
-    storageBucket: "proyecto-en-reactjs.appspot.com",
-    messagingSenderId: "849839207809",
-    appId: "1:849839207809:web:05f3b4ac5aa68847bb2480",
-    measurementId: "G-LSNEVN8JHS"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-// -------------------------------------------------------------------------------
-
-async function singleItemData(idItem) {
-    const productosCollecionRef = collection(db, "productos");
-    const docRef = doc(productosCollecionRef, idItem);
-
-    const docSnapshot = await getDocs(docRef);
-
-    if (docSnapshot.exist() === false)
-        throw new Error("No existe el documento");
-        
-    return { ...docSnapshot.data(), id: docSnapshot.id };
-}
-// -------------------------------------------------------------------------------
+import { getDoc, doc,} from "firebase/firestore";
+import { db } from "../services/firestore";
 
 function ItemDetailContainer() {
-    const [user, setUsers] = useState({});
-
-    const params = useParams();
-    const idUser = params.idUser;
-
+    const { addItem } = useContext(cartContext);
+    const { idUser } = useParams();
+    const [user, setUser] = useState([]);
 
     useEffect(() => {
-        singleItemData(idUser).then((respuesta) => {
-            setUsers(respuesta);
-        })
-            .catch(error => alert(error));
-    }, []);
-
-    const { addItem, isInCart } = useContext(cartContext);
+        const getProducto = async () => {
+            const docRef = doc(db, "asyncMock", idUser);
+            const docSnapshot = await getDoc(docRef);
+            setUser({ id: docSnapshot.id, ...docSnapshot.data() })}
+        getProducto();
+    }, [idUser]);
+    
 
     function onAddToCart(count) {
         alert(`Agregaste ${count} items al carrito`);
@@ -64,7 +33,7 @@ function ItemDetailContainer() {
         <>
             <div className="item-detail-container">
                 <div className="card-img">
-                    <img src={user.avatar} alt={user.name} />
+                    <img src={user.avatar} alt={user.nombre} />
                 </div>
 
                 <div className="item-card" key={user.id}>
