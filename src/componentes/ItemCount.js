@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Button from "./Button";
+import { toast, Slide } from 'react-toastify';
 
 const ItemCount = ({ initial, stock, onAddToCart }) => {
+    initial=1;
     const [count, setCount] = useState(initial);
 
     const decrease = () => {
@@ -15,6 +17,24 @@ const ItemCount = ({ initial, stock, onAddToCart }) => {
             setCount(count + 1);
         }
     };
+
+    const addToCart = () => {
+        onAddToCart(count);
+    
+        toast.error('Producto agregado al Carrito!', {
+          position: "bottom-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition:Slide,
+          icon:'🔴',
+          });
+    
+      };
 
     return (
         <div className="itemcount-container">
@@ -31,7 +51,7 @@ const ItemCount = ({ initial, stock, onAddToCart }) => {
     
             <div className="item-count-boton">
                 <Button color="lightblue"className="boton"
-                    onTouchButton={() => onAddToCart(count)}
+                    onTouchButton={addToCart}
                 >
                     Agregar al carrito
                 </Button>

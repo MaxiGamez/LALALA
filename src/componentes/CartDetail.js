@@ -1,50 +1,28 @@
-// import "../App.css";
-// import { useContext } from "react";
-// import cartContext  from "../context/cartContext";
+import "../App.css";
+import { useContext } from "react";
+import cartContext from "../context/cartContext";
 
-// export  const CartDetail = ({ prod }) => {
-//   const { addCart, deleteItem } = useContext(CartContextProvider);
-//   const { quantity, stock, id } = prod;
+export const CartDetail = ({ prod }) => {
+    const { deleteItem } = useContext(cartContext);
+    const { nombre, precio, subtotal, avatar, quantity, id } = prod;
 
-//   const addItem = () => {
-//     let newItem = quantity + 1;
 
-//     if (quantity >= stock) {
-//       addCart(prod, stock);
-//     } else {
-//       addCart(prod, newItem);
-//     }
-//   };
+    const delItem = () => {
+        deleteItem(id);
+    };
 
-//   const subtractItem = () => {
-//     let newItem = quantity - 1;
-//     addCart(prod, newItem);
-//     if (quantity <= 1) {
-//       deleteItem(id);
-//     } else {
-//       addCart(prod, newItem);
-//     }
-//   };
-
-//   const delItem = () => {
-//     deleteItem(id);
-//   };
-
-//   return (
-
-//     <tbody>
-//       {cart.map((user) => (
-//         <tr key={user.id} className="cartList_row">
-//           <td>
-//             <img height={50} src={user.avatar} alt={user.nombre} />
-//           </td>
-//           <td>{user.nombre}</td>
-//           <td>$ {user.precio}</td>
-//           <td>{user.newCantidad}</td>
-//           <button onClick={() => deleteItem(user)} color="#c63224">X</button>
-//           <th>$ {user.subtotal}</th>
-//         </tr>
-//       ))}
-//     </tbody>
-//   );
-// };
+    return (
+        <>
+            <td>
+                <img height={50} src={avatar} alt={nombre} />
+            </td>
+            <td>{nombre}</td>
+            <td>$ {precio}</td>
+            <td>{quantity}</td>
+            <th>$ {subtotal}</th>
+            <th>
+                <img height={50} className="garbage" onClick={delItem} src="../../img/trash.png" alt="garbage" />
+            </th>
+        </>
+    );
+}

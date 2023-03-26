@@ -31,8 +31,8 @@ export function CartContextProvider({ children }) {
     }, 0);
 
     // Total del carrito
-    const total = cart.reduce((acc, curr) => acc + curr.precio,0);
-    
+    const total = cart.reduce((acc,el) => acc+el.subtotal,0);
+   
 
     return (
         <>

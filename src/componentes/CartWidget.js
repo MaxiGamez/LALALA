@@ -5,16 +5,15 @@ import cartContext from "../context/cartContext";
 
 
 function CartWidget() {
-  const {cart} = useContext(cartContext);
-  
-  const cartCount = cart.length;
+  const { quantity } = useContext(cartContext);
 
     return (
       <span className="cart-widget">
         <BsFillCartFill className="icon" />
-        <span className="badge">{cartCount}</span>
+        <span className="badge">{ quantity === 0 ? <p></p> : quantity }</span>
       </span>
-    );
+    ); 
   }
-  
+
   export default CartWidget;
+

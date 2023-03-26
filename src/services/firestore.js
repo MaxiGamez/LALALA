@@ -3,11 +3,11 @@ import { getFirestore, addDoc, collection, writeBatch, doc } from "firebase/fire
 import productos from "../asyncMock"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAcYk26hqx6nD1ArnEZb4On8cmG_H37DKg",
-    authDomain: "proyecto-en-reactjs.firebaseapp.com",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
     projectId: "proyecto-en-reactjs",
     storageBucket: "proyecto-en-reactjs.appspot.com",
-    messagingSenderId: "849839207809",
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MSG_ID,
     appId: "1:849839207809:web:05f3b4ac5aa68847bb2480",
     measurementId: "G-LSNEVN8JHS"
 };

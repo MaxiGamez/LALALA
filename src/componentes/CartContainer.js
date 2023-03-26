@@ -1,21 +1,26 @@
 import React from "react";
 import { useContext } from "react";
 import cartContext from "../context/cartContext";
-import Button from "./Button";
 import { CartTotal } from "./CartTotal";
+import { CartDetail } from "./CartDetail";
+import {Link} from 'react-router-dom'
 
 
 function CartContainer() {
+
   const { cart } = useContext(cartContext);
-
-
 
 
   return cart.length === 0 ? (
     <div className="empty">
       <h1>No hay Items en el Carrito</h1>
     </div>
-  ) : (  
+  ) : ( <div>
+            <div className="cartHead">
+            <Link to="/checkout">CheckOut</Link>
+            <CartTotal/>
+            </div>
+
             <table className="cartList">
                 <thead className="cartList_head">
                     <tr className="cartList_row">
@@ -30,22 +35,13 @@ function CartContainer() {
 
                 <tbody>
                     {cart.map((user) => (
-                        <tr key={user.id} className="cartList_row">
-                            <td>
-                                <img height={50} src={user.avatar} alt={user.nombre} />
-                            </td>
-                            <td>{user.nombre}</td>
-                            <td>$ {user.precio}</td>
-                            <td>{user.quantity}</td>
-                            <td>
-                                <Button color="#c63224">X</Button>
-                            </td>
-                            <CartTotal/>
+                        <tr key={user.id} >
+                            <CartDetail prod= {user}/>
                         </tr>
                     ))}
                 </tbody>
             </table>
-
+        </div>
   );
 }
 

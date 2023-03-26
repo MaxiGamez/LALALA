@@ -1,4 +1,3 @@
-
 import React from "react";
 import NavBar from "./componentes/NavBar";
 import './App.css';
@@ -7,7 +6,10 @@ import ItemDetailContainer from "./componentes/ItemDetailContainer";
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import { CartContextProvider } from "./context/cartContext";
 import CartContainer from "./componentes/CartContainer";
-// import { exportDataWithBatch } from "./services/firestore";
+import CheckoutForm  from './componentes/CheckoutForm';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
       return (
@@ -30,8 +32,9 @@ function App() {
 
                                     <Route path="/checkout/:id"
                                           element={<h3>Gracias por tu compra</h3>}/>
+                                    <Route exact path="/checkout" element={<CheckoutForm />} />
                               </Routes>
-
+                              <ToastContainer/>
                         </BrowserRouter>
                   </CartContextProvider>
             </div>
