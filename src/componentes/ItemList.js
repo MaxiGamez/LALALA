@@ -26,8 +26,8 @@ export default function ItemList({ users, category }) {
     }
     else {
         return (
-            <div className="Item-list-container">
-                <ul className="item-list">
+            <div className="Item-list-container1">
+                <ul className="item-list1">
                     {users.map((user) => (
 
                         <li className="item-card" key={user.id}>
@@ -36,7 +36,9 @@ export default function ItemList({ users, category }) {
                             <h2>{`${user.nombre}`}</h2>
                             
                             <h4>{user.peso}gr</h4>
+
                             <h4>${user.precio}</h4>
+
                             <br></br>
                             <Link to={`/productos/${user.id}`}>
                                 <Button>
@@ -44,7 +46,6 @@ export default function ItemList({ users, category }) {
                                 </Button>
                             </Link>
                         </li>
-
                     ))}
                 </ul>
             </div>

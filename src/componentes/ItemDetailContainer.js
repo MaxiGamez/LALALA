@@ -23,7 +23,6 @@ function ItemDetailContainer() {
     
 
     function onAddToCart(count) {
-        // alert(`Agregaste ${count} items al carrito`);
         addItem(user, count);
     }
 

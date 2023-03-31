@@ -11,8 +11,7 @@ export const CartTotal = () => {
   return (
 
     <div className="cart-total">
-      <h1>Total</h1>
-      <h1 className="cart-total-title">${total}</h1>
+      <h1> El total es: ${total}</h1>
     </div>
 
  

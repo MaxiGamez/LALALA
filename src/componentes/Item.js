@@ -3,13 +3,13 @@ import "../App.css";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 
-const Item = ({ id, nombre, avatar, peso, precio, stock}) => {
+const Item = ({ id, nombre, avatar, peso, precio}) => {
 
     return (
 
-        <div className="Item-list-container">
+        <div className="Item-list-container2">
 
-            <ul className="item-list">
+            <ul className="item-list2">
 
                 <li className="item-card" id={id}>
                     <img alt="imagen" src={avatar} />
@@ -20,7 +20,7 @@ const Item = ({ id, nombre, avatar, peso, precio, stock}) => {
 
                     <h4>${precio}</h4>
 
-                    <small>{stock}ud.</small>
+                    
                     <br></br>
 
                     <Link to={`/productos/${id}`}>
@@ -28,9 +28,7 @@ const Item = ({ id, nombre, avatar, peso, precio, stock}) => {
                             Ver Detalles
                         </Button>
                     </Link>
-
                 </li>
-
             </ul>
         </div>
     )

@@ -75,7 +75,7 @@ const CheckoutForm = () => {
                                     className="form-control"
                                     type="text"
                                     name="name"
-                                    placeholder="Name.."
+                                    placeholder="Nombre.."
                                     onChange={sendOrder}
                                     value={buyer.name}
                                 />
@@ -93,14 +93,14 @@ const CheckoutForm = () => {
                         </div>
                         <div id="shipping-info">
                             <hr />
-                            <p>Shipping Information:</p>
+                            <p>Informacion de envio :</p>
                             <hr />
                             <div className="form-field">
                                 <input
                                     className="form-control"
                                     type="text"
                                     name="address"
-                                    placeholder="Address.."
+                                    placeholder="Direccion.."
                                     onChange={sendOrder}
                                     value={buyer.address}
                                 />
@@ -110,7 +110,7 @@ const CheckoutForm = () => {
                                     className="form-control"
                                     type="text"
                                     name="city"
-                                    placeholder="City.."
+                                    placeholder="Ciudad.."
                                     onChange={sendOrder}
                                     value={buyer.city}
                                 />
@@ -120,7 +120,7 @@ const CheckoutForm = () => {
                                     className="form-control"
                                     type="text"
                                     name="state"
-                                    placeholder="State.."
+                                    placeholder="Localidad.."
                                     onChange={sendOrder}
                                     value={buyer.state}
                                 />
@@ -130,7 +130,7 @@ const CheckoutForm = () => {
                                     className="form-control"
                                     type="text"
                                     name="zipcode"
-                                    placeholder="Zip code.."
+                                    placeholder="Codigo postal.."
                                     onChange={sendOrder}
                                     value={buyer.zipcode}
                                 />
@@ -149,7 +149,7 @@ const CheckoutForm = () => {
             </div>
             <div className="col-lg-6">
                 <div className="box-element-2">
-                    <h5>Order Summary</h5>
+                    <h5>Resumen del pedido</h5>
                     <hr />
                     <div>
                         <div className="item-box">

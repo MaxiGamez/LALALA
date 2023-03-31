@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "./componentes/NavBar";
+import Footer from "./componentes/footer";
 import './App.css';
 import ItemListContainer from "./componentes/ItemListContainer";
 import ItemDetailContainer from "./componentes/ItemDetailContainer";
@@ -30,11 +31,12 @@ function App() {
 
                                     <Route path="/cart" element={<CartContainer />}/>
 
-                                    <Route path="/checkout/:id"
-                                          element={<h3>Gracias por tu compra</h3>}/>
-                                    <Route exact path="/checkout" element={<CheckoutForm />} />
+                                    <Route exact path="/checkout" element={<CheckoutForm />}/>
                               </Routes>
                               <ToastContainer/>
+
+                              <Footer />
+                              
                         </BrowserRouter>
                   </CartContextProvider>
             </div>

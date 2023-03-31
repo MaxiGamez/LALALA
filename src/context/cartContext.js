@@ -32,7 +32,6 @@ export function CartContextProvider({ children }) {
 
     // Total del carrito
     const total = cart.reduce((acc,el) => acc+el.subtotal,0);
-   
 
     return (
         <>
