@@ -5,7 +5,7 @@ import ItemCount from "./ItemCount";
 import { useContext } from "react";
 import cartContext from "../context/cartContext";
 import Loader from "./Loader";
-import { getDoc, doc,} from "firebase/firestore";
+import { getDoc, doc, } from "firebase/firestore";
 import { db } from "../services/firestore";
 
 function ItemDetailContainer() {
@@ -17,10 +17,11 @@ function ItemDetailContainer() {
         const getProducto = async () => {
             const docRef = doc(db, "asyncMock", idUser);
             const docSnapshot = await getDoc(docRef);
-            setUser({ id: docSnapshot.id, ...docSnapshot.data() })}
+            setUser({ id: docSnapshot.id, ...docSnapshot.data() })
+        }
         getProducto();
     }, [idUser]);
-    
+
 
     function onAddToCart(count) {
         addItem(user, count);
@@ -35,9 +36,17 @@ function ItemDetailContainer() {
                     <img src={user.avatar} alt={user.nombre} />
                 </div>
 
-                <div className="item-card" key={user.id}>
+                <div className="item-detail-card" key={user.id}>
 
                     <h1>{`${user.nombre}`}</h1>
+                
+                    <p className="descripcion">
+                   Productos "INTIPAN" sin tacc libres de gluten 
+                   <br></br>
+                   100$ saludables
+
+                    </p>
+
                     <h2>${user.precio}</h2>
                     <h3>{user.peso}gr</h3>
                     <small>{user.stock}ud.</small>

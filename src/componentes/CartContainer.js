@@ -42,11 +42,13 @@ function CartContainer() {
 
 
         <div className="cartHead">
-            <button onClick={clearCart}>Vaciar carrito</button>
-            
-            <CartTotal />
 
-            <Link to="/checkout">Pagar</Link>
+            <button className="boton-clear-cart" onClick={clearCart}>Vaciar carrito</button>
+
+            <CartTotal />
+            
+
+            <Link className="boton-pagar" to="/checkout">Finalizar Compra</Link>
 
         </div>
     </div>

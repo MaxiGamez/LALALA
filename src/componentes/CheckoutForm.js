@@ -4,6 +4,7 @@ import { useContext } from "react";
 import cartContext from "../context/cartContext";
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 
+
 const CheckoutForm = () => {
 
     const { cart, quantity, total, clearCart } = useContext(cartContext);
@@ -142,7 +143,7 @@ const CheckoutForm = () => {
                             id="form-button"
                             className="btn btn-secondary me-md-2"
                             type="submit"
-                            value="Continue"
+                            value="Pagar"
                         />
                     </form>
                 </div>

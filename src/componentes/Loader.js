@@ -1,8 +1,10 @@
 import React from "react";
-import { JellyTriangle } from "@uiball/loaders";
+import { DotSpinner } from "@uiball/loaders";
 
 function Loader(props) {
-  return <JellyTriangle size={60} speed={1.75} color="black"/>
+  return <DotSpinner size={100} speed={1.75} color="#6d2b90"/>
+  
 }
 
 export default Loader;
+
